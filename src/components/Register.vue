@@ -13,12 +13,7 @@
             label="* user name"
             id="name"
           ></v-text-field>
-          <v-text-field
-            type="email"
-            required
-            label="* email"
-            v-model="email"
-          >
+          <v-text-field type="email" required label="* email" v-model="email">
           </v-text-field>
           <v-text-field
             :append-icon="value1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
@@ -40,9 +35,15 @@
             autocomplete="on"
           >
           </v-text-field>
-          <button class="register-btn mt-4" type="submit" :disabled="confirmError">Register</button>
+          <button
+            class="register-btn mt-4"
+            type="submit"
+            :disabled="confirmError"
+          >
+            Register
+          </button>
         </form>
-          <div v-if="error" class="inform-error mb-6">{{ error }}</div>
+        <div v-if="error" class="inform-error mb-6">{{ error }}</div>
       </div>
       <!-- <div class="mt-8 mb-8">
         <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
@@ -83,9 +84,9 @@ export default {
         console.log(res);
         this.$router.go();
       } catch (err) {
-        const errArr = err.message.split(' ');
+        const errArr = err.message.split(" ");
         const cut = errArr.slice(1);
-        this.error = cut.join(' ');
+        this.error = cut.join(" ");
       }
     },
   },
@@ -93,18 +94,18 @@ export default {
     passwordConfirmRule() {
       return () =>
         this.password === this.confirmPassword || "Not match with password.";
-    }
+    },
   },
   watch: {
-    confirmPassword: function(oldVal, newVal) {
-      if(this.password !== oldVal) {
+    confirmPassword: function (oldVal, newVal) {
+      if (this.password !== oldVal) {
         this.confirmError = true;
         console.log("unmatch", newVal);
       } else {
         this.confirmError = false;
         console.log("match");
       }
-    }
+    },
   },
 };
 </script>

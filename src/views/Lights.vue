@@ -10,10 +10,10 @@
         <p>所有商品>燈具</p>
       </div>
       <v-row>
-        <v-col v-for="(item,i) in displayItems" :key="i" cols="6" sm="3">
+        <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <v-card class="pa-2 flashHover" outlined tile>
             <figure>
-                <img
+              <img
                 @click="checkItem(item.img)"
                 class="card-img product-img"
                 :src="`${publicPath}img/elements/${item.img}.jpg`"
@@ -27,7 +27,11 @@
       </v-row>
     </v-container>
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
   </div>
 </template>
@@ -44,17 +48,37 @@ export default {
     };
   },
   created() {
-    let allitems = ["light01", "light02", "light03", "light04", "light05", "light06", "light07", "light08", "light09", "light10", "light11", "light12"];
+    let allitems = [
+      "light01",
+      "light02",
+      "light03",
+      "light04",
+      "light05",
+      "light06",
+      "light07",
+      "light08",
+      "light09",
+      "light10",
+      "light11",
+      "light12",
+    ];
     let newItems = [];
     for (let i = 0; i < allitems.length; i++) {
       let getInfo = this.infoData[allitems[i]];
-      newItems.push({"img": allitems[i], "title": getInfo["title"], "price": getInfo["price"], "description": getInfo["description"]});
+      newItems.push({
+        img: allitems[i],
+        title: getInfo["title"],
+        price: getInfo["price"],
+        description: getInfo["description"],
+      });
     }
     this.displayItems = newItems;
   },
   methods: {
     checkItem(itemName) {
-      let reassemblyName = (itemName[0].toUpperCase() + itemName.slice(1)).split('', 5).join('');
+      let reassemblyName = (itemName[0].toUpperCase() + itemName.slice(1))
+        .split("", 5)
+        .join("");
       this.$router.push({ name: reassemblyName, params: { itemid: itemName } });
     },
   },
@@ -90,7 +114,7 @@ export default {
 }
 @-webkit-keyframes flash {
   0% {
-    opacity: .2;
+    opacity: 0.2;
   }
   100% {
     opacity: 1;
@@ -98,7 +122,7 @@ export default {
 }
 @keyframes flash {
   0% {
-    opacity: .2;
+    opacity: 0.2;
   }
   100% {
     opacity: 1;

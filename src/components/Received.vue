@@ -17,16 +17,16 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('resize', () => {
-      this.windowWidth = document.documentElement.clientWidth
-    })
+    window.addEventListener("resize", () => {
+      this.windowWidth = document.documentElement.clientWidth;
+    });
   },
   computed: {
     isSmaller() {
-       return this.windowWidth < 960;
+      return this.windowWidth < 960;
     },
   },
-}
+};
 </script>
 
 <style>

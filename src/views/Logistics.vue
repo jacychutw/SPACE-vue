@@ -15,10 +15,18 @@
       </p>
     </div>
     <div class="ml-16 mr-16">
-      <img class="logistics-img" src="../assets/logistics.png" alt="logistics" />
+      <img
+        class="logistics-img"
+        src="../assets/logistics.png"
+        alt="logistics"
+      />
     </div>
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
   </div>
 </template>

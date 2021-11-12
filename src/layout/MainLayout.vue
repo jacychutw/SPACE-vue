@@ -3,12 +3,17 @@
     <TopHeader />
 
     <div class="logo">
-      <img @click="toHome" class="logo-img" src="../assets/space.svg" alt="space" />
+      <img
+        @click="toHome"
+        class="logo-img"
+        src="../assets/space.svg"
+        alt="space"
+      />
     </div>
 
     <div class="nav">
       <ul class="navbar-list">
-        <li class="navbar-item" style="padding-top: 2px;">
+        <li class="navbar-item" style="padding-top: 2px">
           <router-link to="/all-products">所有商品</router-link>
         </li>
         <li class="navbar-item special-items">
@@ -21,7 +26,7 @@
                 small
                 depressed
                 :ripple="false"
-                style="padding-top: 5px;"
+                style="padding-top: 5px"
               >
                 精選商品
               </v-btn>
@@ -40,9 +45,8 @@
               </v-list-item>
             </v-list>
           </v-menu>
-
         </li>
-        <li class="navbar-item" style="padding-top: 2px;">
+        <li class="navbar-item" style="padding-top: 2px">
           <router-link to="/about">關於我們</router-link>
         </li>
       </ul>
@@ -61,14 +65,13 @@ import TopHeader from "../components/TopHeader.vue";
 export default {
   name: "App",
 
-  data: () => ({
-  }),
+  data: () => ({}),
   components: { Footer, TopHeader },
   methods: {
     toHome() {
       this.$router.push({ name: "Home" });
-    }
-  }
+    },
+  },
 };
 </script>
 

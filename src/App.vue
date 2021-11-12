@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Spinner from "@/components/Spinner.vue"
+import Spinner from "@/components/Spinner.vue";
 
 export default {
   name: "App",
@@ -19,7 +19,7 @@ export default {
         val: false,
       },
       // addSpinner: "",
-    }
+    };
   },
   // provide() {
   //   return {
@@ -61,8 +61,8 @@ a {
   margin-bottom: 0px;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

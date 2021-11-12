@@ -112,7 +112,11 @@
     </v-container>
 
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
   </div>
 </template>
@@ -177,7 +181,7 @@ export default {
 }
 @-webkit-keyframes flash {
   0% {
-    opacity: .4;
+    opacity: 0.4;
   }
   100% {
     opacity: 1;
@@ -185,7 +189,7 @@ export default {
 }
 @keyframes flash {
   0% {
-    opacity: .4;
+    opacity: 0.4;
   }
   100% {
     opacity: 1;

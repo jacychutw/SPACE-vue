@@ -1,13 +1,11 @@
 <template>
   <div>
     <img class="home-img" src="../assets/home.png" alt="home" />
-      <p class="welcome-slogan mt-4">
-        Welcome! Take A Seat.
-      </p>
+    <p class="welcome-slogan mt-4">Welcome! Take A Seat.</p>
     <v-container class="white">
       <v-row>
         <!-- 特製組合 -->
-        <v-col v-for="(item,i) in displayItems" :key="i" cols="6" sm="3">
+        <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <div class="fixed-card" @click="checkItem(item.img)">
             <v-card class="pa-2 home-link-img" outlined tile>
               <img
@@ -57,20 +55,46 @@ export default {
     };
   },
   created() {
-    let allitems = ["chair01", "chair02", "chair03", "chair04", "chair05", "chair06", "chair07", "chair08", "chair09", "chair10", "chair11", "chair12",
-                  "light01", "light02", "light03", "light04", "light05", "light06", "light07", "light08", "light09", "light10", "light11", "light12"];
+    let allitems = [
+      "chair01",
+      "chair02",
+      "chair03",
+      "chair04",
+      "chair05",
+      "chair06",
+      "chair07",
+      "chair08",
+      "chair09",
+      "chair10",
+      "chair11",
+      "chair12",
+      "light01",
+      "light02",
+      "light03",
+      "light04",
+      "light05",
+      "light06",
+      "light07",
+      "light08",
+      "light09",
+      "light10",
+      "light11",
+      "light12",
+    ];
     let newItems = [];
     for (let i = 0; i < 4; i++) {
       let idx = Math.floor(Math.random() * allitems.length);
       let titleID = allitems[idx];
-      newItems.push({"img": allitems[idx], "title": this.homeData[titleID]});
+      newItems.push({ img: allitems[idx], title: this.homeData[titleID] });
       allitems.splice(idx, 1);
     }
     this.displayItems = newItems;
   },
   methods: {
     checkItem(itemName) {
-      let reassemblyName = (itemName[0].toUpperCase() + itemName.slice(1)).split('', 5).join('');
+      let reassemblyName = (itemName[0].toUpperCase() + itemName.slice(1))
+        .split("", 5)
+        .join("");
       this.$router.push({ name: reassemblyName, params: { itemid: itemName } });
     },
   },

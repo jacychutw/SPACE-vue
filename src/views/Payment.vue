@@ -16,7 +16,11 @@
       <img class="payment-img" src="../assets/payment.png" alt="payment" />
     </div>
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
   </div>
 </template>

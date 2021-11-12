@@ -9,25 +9,29 @@
     </div>
     <div class="ml-8 mr-8 shineHover">
       <figure>
-      <img
-        @click="toChairs"
-        class="all-products-img"
-        src="../assets/chairs.png"
-        alt="chairs"
-      />
+        <img
+          @click="toChairs"
+          class="all-products-img"
+          src="../assets/chairs.png"
+          alt="chairs"
+        />
       </figure>
       <div class="mt-4"></div>
       <figure>
-      <img
-        @click="toLights"
-        class="all-products-img mt-2"
-        src="../assets/lights.png"
-        alt="lights"
-      />
+        <img
+          @click="toLights"
+          class="all-products-img mt-2"
+          src="../assets/lights.png"
+          alt="lights"
+        />
       </figure>
     </div>
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
   </div>
 </template>
@@ -35,8 +39,7 @@
 <script>
 export default {
   data() {
-    return {
-    }
+    return {};
   },
   methods: {
     toChairs() {
@@ -45,8 +48,8 @@ export default {
     toLights() {
       this.$router.push({ name: "Lights" });
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -85,17 +88,25 @@ export default {
   left: -75%;
   z-index: 2;
   display: block;
-  content: '';
+  content: "";
   width: 50%;
   height: 100%;
-  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
   -webkit-transform: skewX(-25deg);
   transform: skewX(-25deg);
 }
 .shineHover figure:hover::before {
-  -webkit-animation: shine .9s;
-  animation: shine .9s;
+  -webkit-animation: shine 0.9s;
+  animation: shine 0.9s;
 }
 @-webkit-keyframes shine {
   100% {

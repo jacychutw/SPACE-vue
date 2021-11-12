@@ -65,7 +65,11 @@
     </v-container>
 
     <div class="mt-8 mb-8">
-      <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
+      <img
+        class="threedots-center"
+        src="../assets/threedots.png"
+        alt="threedots"
+      />
     </div>
 
     <!-- ====== check-dialog ====== -->

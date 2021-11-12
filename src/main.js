@@ -23,7 +23,7 @@ const firebaseConfig = {
   projectId: "ecommerce-e4d15",
   storageBucket: "ecommerce-e4d15.appspot.com",
   messagingSenderId: "1078838774860",
-  appId: "1:1078838774860:web:51145f5b63820c70dff8e9"
+  appId: "1:1078838774860:web:51145f5b63820c70dff8e9",
 };
 
 // Initialize Firebase

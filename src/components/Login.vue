@@ -27,7 +27,7 @@
           ></v-text-field>
           <button class="login-btn mt-4" type="submit">Login</button>
         </form>
-          <div v-if="error" class="inform-error mb-6">{{ error }}</div>
+        <div v-if="error" class="inform-error mb-6">{{ error }}</div>
       </div>
     </div>
   </div>
@@ -56,13 +56,13 @@ export default {
         console.log(val);
         this.$router.replace({ name: "ShoppingCart" });
       } catch (err) {
-        const errArr = err.message.split(' ');
+        const errArr = err.message.split(" ");
         const cut = errArr.slice(1);
-        this.error = cut.join(' ');
+        this.error = cut.join(" ");
       }
-    }
+    },
   },
-}
+};
 </script>
 
 <style>

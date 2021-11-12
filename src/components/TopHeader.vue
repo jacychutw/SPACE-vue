@@ -71,7 +71,7 @@ export default {
     async readData() {
       let user = firebase.auth().currentUser;
       //let username = user.displayName;
-      if(user) {
+      if (user) {
         this.useremail = user.email;
         const dbGetUser = firebase
           .firestore()

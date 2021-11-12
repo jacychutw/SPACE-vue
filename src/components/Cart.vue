@@ -36,32 +36,45 @@
       </template>
     </v-data-table>
 
-    <div v-if="checkEmptyCart()" class="mt-8" style="display: flex; justify-content: center; color: #915233">
+    <div
+      v-if="checkEmptyCart()"
+      class="mt-8"
+      style="display: flex; justify-content: center; color: #915233"
+    >
       購物車目前是空的，去逛逛吧！
     </div>
 
-    <div class="mt-4 mb-2" style="display: flex; justify-content: center; color: #526161">
+    <div
+      class="mt-4 mb-2"
+      style="display: flex; justify-content: center; color: #526161"
+    >
       <div>結帳金額：NT$ {{ sumnumber }}</div>
       <!-- <div class="float-right mt-8">
         <span class="checkcart-button">下一步</span>
       </div> -->
     </div>
 
-    <div v-if="checkBill()" class="mb-2" style="display: flex; justify-content: center; color: rgb(177, 81, 81);">您的結帳金額超過 5 萬元(大量訂購)，欲購買請直接致電與我們聯繫！</div>
+    <div
+      v-if="checkBill()"
+      class="mb-2"
+      style="display: flex; justify-content: center; color: rgb(177, 81, 81)"
+    >
+      您的結帳金額超過 5 萬元(大量訂購)，欲購買請直接致電與我們聯繫！
+    </div>
 
     <!-- <form action="https://ccore.newebpay.com/MPG/mpg_gateway" method="post"> -->
     <form @submit.prevent="submitForm">
-    <!-- <form action="{{ tradeWithPage.PayGateWay }}" method="post"> -->
-      <input type="hidden" name="MerchantID" value="MS125084583">
-      <input type="hidden" name="RespondType" value="JSON">
-      <input type="hidden" name="TradeInfo" value="#{tradeinfo}">
-      <input type="hidden" name="TradeSha" value="#{sha}">
-      <input type="hidden" name="TimeStamp" :value="timestamp">
-      <input type="hidden" name="Version" value="1.5">
-      <input type="hidden" name="MerchantOrderNo" :value="timestamp">
-      <input type="hidden" name="Amt" :value="sumnumber">
-      <input type="hidden" name="ItemDesc" value="SPACE-shopping">
-      <input type="hidden" name="Email" :value="useremail">
+      <!-- <form action="{{ tradeWithPage.PayGateWay }}" method="post"> -->
+      <input type="hidden" name="MerchantID" value="MS125084583" />
+      <input type="hidden" name="RespondType" value="JSON" />
+      <input type="hidden" name="TradeInfo" value="#{tradeinfo}" />
+      <input type="hidden" name="TradeSha" value="#{sha}" />
+      <input type="hidden" name="TimeStamp" :value="timestamp" />
+      <input type="hidden" name="Version" value="1.5" />
+      <input type="hidden" name="MerchantOrderNo" :value="timestamp" />
+      <input type="hidden" name="Amt" :value="sumnumber" />
+      <input type="hidden" name="ItemDesc" value="SPACE-shopping" />
+      <input type="hidden" name="Email" :value="useremail" />
       <!-- <div @click="submitForm" style="display: flex; justify-content: flex-end;"><button class="checkcart-button">下一步</button></div> -->
     </form>
 
@@ -96,7 +109,6 @@
       </template>
     </check-dialog>
     <!-- ====== end of delete-dialog ====== -->
-
   </div>
 </template>
 
@@ -105,8 +117,8 @@ import CheckDialog from "../components/CheckDialog";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 //import { Endcrypt } from "endcrypt";
-import AES from '@/utils/aes.js';
-import axios from 'axios';
+import AES from "@/utils/aes.js";
+import axios from "axios";
 
 export default {
   data() {
@@ -118,9 +130,9 @@ export default {
         // HashKey: process.env.HASHKEY,//'MS125084583',
         // HashIV: process.env.HASHIV,//'2RLIPflUtc5Doo0Km18CgGveoqhLSL4K',
         // MerchantID: process.env.MERCHANTID,//'CXlO34ad4svifoQP',
-        HashIV: 'CXlO34ad4svifoQP',
-        HashKey: '2RLIPflUtc5Doo0Km18CgGveoqhLSL4K',
-        MerchantID: 'MS125084583',
+        HashIV: "CXlO34ad4svifoQP",
+        HashKey: "2RLIPflUtc5Doo0Km18CgGveoqhLSL4K",
+        MerchantID: "MS125084583",
       },
       publicPath: process.env.BASE_URL,
       products: [],
@@ -178,13 +190,13 @@ export default {
     "check-dialog": CheckDialog,
   },
   mounted() {
-    window.addEventListener('resize', () => {
-      this.windowWidth = document.documentElement.clientWidth
-    })
+    window.addEventListener("resize", () => {
+      this.windowWidth = document.documentElement.clientWidth;
+    });
   },
   computed: {
     isSmaller() {
-       return this.windowWidth < 960;
+      return this.windowWidth < 960;
     },
   },
   methods: {
@@ -213,10 +225,16 @@ export default {
     checkToStep2() {
       if (this.products.length == 0 || this.sumnumber > 50000) {
         this.toNextStep = false;
-        this.$emit("toStepTwo", false, this.sumnumber)
+        this.$emit("toStepTwo", false, this.sumnumber);
       } else {
         this.toNextStep = true;
-        this.$emit("toStepTwo", true, this.sumnumber, this.username, this.useremail)
+        this.$emit(
+          "toStepTwo",
+          true,
+          this.sumnumber,
+          this.username,
+          this.useremail
+        );
         return false;
       }
     },
@@ -272,32 +290,31 @@ export default {
       }, 300);
     },
     submitForm() {
-
-      let key = '2RLIPflUtc5Doo0Km18CgGveoqhLSL4K';
-      let iv = 'CXlO34ad4svifoQP';
+      let key = "2RLIPflUtc5Doo0Km18CgGveoqhLSL4K";
+      let iv = "CXlO34ad4svifoQP";
 
       this.trade = {
         MerchantID: this.spgateway.MerchantID,
-        RespondType: 'JSON',
+        RespondType: "JSON",
         TimeStamp: this.timestamp,
         Version: 1.5,
         MerchantOrderNo: this.timestamp,
         Amt: this.sumnumber,
-        ItemDesc: 'SPACE-shopping',
+        ItemDesc: "SPACE-shopping",
         Email: this.useremail,
-      }
+      };
 
       this.tradeWithPage = {
         MerchantID: this.spgateway.MerchantID,
-        RespondType: 'JSON',
+        RespondType: "JSON",
         TimeStamp: this.timestamp,
         Version: 1.5,
         MerchantOrderNo: this.timestamp,
         Amt: this.sumnumber,
-        ItemDesc: 'SPACE-shopping',
+        ItemDesc: "SPACE-shopping",
         Email: this.useremail,
-        PayGateWay: 'https://ccore.newebpay.com/MPG/mpg_gateway',
-      }
+        PayGateWay: "https://ccore.newebpay.com/MPG/mpg_gateway",
+      };
 
       console.log(this.trade);
       let aesMStr = AES.encryptTradeInfo(key, iv, this.trade);
@@ -316,23 +333,28 @@ export default {
       // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
       // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST,OPTIONS,DELETE,PUT'
       //axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-      axios.post('https://secret-ocean-49799.herokuapp.com/https://ccore.newebpay.com/MPG/mpg_gateway', {
-        tradeinfo: aesMStr,
-        sha: sha,
-      },
-      //{headers: headers}
-        ).then(response => {
-        console.log('Data saved successfully');
-        console.log(response);
-        // this.response = response.data
+      axios
+        .post(
+          "https://secret-ocean-49799.herokuapp.com/https://ccore.newebpay.com/MPG/mpg_gateway",
+          {
+            tradeinfo: aesMStr,
+            sha: sha,
+          }
+          //{headers: headers}
+        )
+        .then((response) => {
+          console.log("Data saved successfully");
+          console.log(response);
+          // this.response = response.data
 
-        // this.success = 'Data saved successfully';
-        // this.response = JSON.stringify(response, null, 2)
-      }).catch(error => {
-        console.log(error);
+          // this.success = 'Data saved successfully';
+          // this.response = JSON.stringify(response, null, 2)
+        })
+        .catch((error) => {
+          console.log(error);
 
-        // this.response = 'Error: ' + error.response.status
-      })
+          // this.response = 'Error: ' + error.response.status
+        });
       // this.name = '';
       // this.email = '';
       // this.firstSon = '';
@@ -340,10 +362,9 @@ export default {
   },
   created() {
     this.readData();
-    this.timestamp = Math.floor(Date.now()/ 1000);
+    this.timestamp = Math.floor(Date.now() / 1000);
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
