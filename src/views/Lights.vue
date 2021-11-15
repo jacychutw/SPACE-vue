@@ -48,20 +48,28 @@ export default {
     };
   },
   created() {
-    let allitems = [
-      "light01",
-      "light02",
-      "light03",
-      "light04",
-      "light05",
-      "light06",
-      "light07",
-      "light08",
-      "light09",
-      "light10",
-      "light11",
-      "light12",
-    ];
+    // let allitems = [
+    //   "light01",
+    //   "light02",
+    //   "light03",
+    //   "light04",
+    //   "light05",
+    //   "light06",
+    //   "light07",
+    //   "light08",
+    //   "light09",
+    //   "light10",
+    //   "light11",
+    //   "light12",
+    // ];
+
+    let allitems = [];
+    let start = Object.keys(this.infoData).length / 2;
+    let end = Object.keys(this.infoData).length;
+    for (let i = start; i < end; i++) {
+      allitems.push(Object.keys(this.infoData)[i]);
+    }
+
     let newItems = [];
     for (let i = 0; i < allitems.length; i++) {
       let getInfo = this.infoData[allitems[i]];
