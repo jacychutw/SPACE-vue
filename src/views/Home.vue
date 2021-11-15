@@ -55,32 +55,11 @@ export default {
     };
   },
   created() {
-    let allitems = [
-      "chair01",
-      "chair02",
-      "chair03",
-      "chair04",
-      "chair05",
-      "chair06",
-      "chair07",
-      "chair08",
-      "chair09",
-      "chair10",
-      "chair11",
-      "chair12",
-      "light01",
-      "light02",
-      "light03",
-      "light04",
-      "light05",
-      "light06",
-      "light07",
-      "light08",
-      "light09",
-      "light10",
-      "light11",
-      "light12",
-    ];
+    let allitems = [];
+    for (let i = 0; i < Object.keys(this.homeData).length; i++) {
+      allitems.push(Object.keys(this.homeData)[i]);
+    }
+    console.log("all", allitems);
     let newItems = [];
     for (let i = 0; i < 4; i++) {
       let idx = Math.floor(Math.random() * allitems.length);
