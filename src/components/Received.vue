@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .well-received {
   background-color: #dce6e6;
   padding: 20px;

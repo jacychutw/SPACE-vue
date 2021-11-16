@@ -4,7 +4,6 @@
     <p class="welcome-slogan mt-4">Welcome! Take A Seat.</p>
     <v-container class="white">
       <v-row>
-        <!-- 特製組合 -->
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <div class="fixed-card" @click="checkItem(item.img)">
             <v-card class="pa-2 home-link-img" outlined tile>
@@ -59,7 +58,6 @@ export default {
     for (let i = 0; i < Object.keys(this.homeData).length; i++) {
       allitems.push(Object.keys(this.homeData)[i]);
     }
-    console.log("all", allitems);
     let newItems = [];
     for (let i = 0; i < 4; i++) {
       let idx = Math.floor(Math.random() * allitems.length);
@@ -103,12 +101,10 @@ export default {
 .fixed-card .hide {
   display: none;
   position: absolute;
-
   width: 96%;
   padding: 1%;
   bottom: 0%;
   background-color: #a08563;
-
   margin: 2%;
 }
 

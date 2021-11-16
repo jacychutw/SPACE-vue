@@ -50,7 +50,6 @@
               <button @click="e1 = 1" class="uncheckcart-button mb-8 mr-1">
                 上一步
               </button>
-              <!-- <button @click="e1 = 3" class="checkcart-button mb-8 ml-1">下一步</button> -->
               <button @click="checkUserInfo" class="checkcart-button mb-8 ml-1">
                 下一步
               </button>
@@ -112,7 +111,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .page-title {
   display: flex;
   justify-content: center;

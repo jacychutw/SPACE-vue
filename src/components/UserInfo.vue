@@ -83,7 +83,6 @@
             @input="$v.shippingAddress.$touch()"
             @blur="$v.shippingAddress.$touch()"
           ></v-text-field>
-          <!-- <v-btn @click="checkError">檢查</v-btn> -->
         </div>
         <div
           class="moneyTotal mb-8"
@@ -215,7 +214,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .order-info {
   border: 1px solid gray;
   padding: 20px;

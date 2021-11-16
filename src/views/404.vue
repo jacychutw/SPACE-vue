@@ -5,7 +5,6 @@
       Please check the URL. Try going
       <span @click="goHome" style="color: #915233">HERE</span>
     </p>
-    <!-- <div style="display: flex; justify-content: center;"> -->
     <div>
       <img :src="`${publicPath}img/space.png`" class="space-img mt-16" />
     </div>

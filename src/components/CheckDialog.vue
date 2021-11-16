@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .dialog-content {
   position: relative;
   text-align: center;

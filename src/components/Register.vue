@@ -45,9 +45,6 @@
         </form>
         <div v-if="error" class="inform-error mb-6">{{ error }}</div>
       </div>
-      <!-- <div class="mt-8 mb-8">
-        <img class="threedots-center" src="../assets/threedots.png" alt="threedots" />
-      </div> -->
     </div>
   </div>
 </template>
@@ -97,10 +94,10 @@ export default {
     },
   },
   watch: {
-    confirmPassword: function (oldVal, newVal) {
+    confirmPassword: function (oldVal) {
       if (this.password !== oldVal) {
         this.confirmError = true;
-        console.log("unmatch", newVal);
+        console.log("unmatch");
       } else {
         this.confirmError = false;
         console.log("match");
@@ -110,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page-title {
   display: flex;
   justify-content: center;

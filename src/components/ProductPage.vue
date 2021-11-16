@@ -121,7 +121,6 @@ export default {
   computed: {
     title() {
       let item = Info[this.id];
-      //const { item01 } = Info;
       return item["title"];
     },
     price() {
@@ -232,7 +231,6 @@ export default {
           const displayName = user.displayName;
           const userEmail = user.email;
           this.alreadyLogin = true;
-          //this.openCheckDialog = true;
           firebase
             .firestore()
             .collection("userdata")
@@ -277,11 +275,6 @@ export default {
         this.$router.push({ name: "ShoppingCart" });
       }, 300);
     },
-    // reRenderCheckCart() {
-    //   setTimeout(() => {
-    //     this.$router.go();
-    //   }, 300);
-    // },
     numberMoreThanNine() {
       if (this.counter > 8) {
         return true;

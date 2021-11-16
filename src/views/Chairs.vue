@@ -48,21 +48,6 @@ export default {
     };
   },
   created() {
-    // let allitems = [
-    //   "chair01",
-    //   "chair02",
-    //   "chair03",
-    //   "chair04",
-    //   "chair05",
-    //   "chair06",
-    //   "chair07",
-    //   "chair08",
-    //   "chair09",
-    //   "chair10",
-    //   "chair11",
-    //   "chair12",
-    // ];
-
     let allitems = [];
     let start = 0;
     let end = Object.keys(this.infoData).length / 2;

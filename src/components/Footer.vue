@@ -35,7 +35,7 @@
         cols="12"
         style="background-color: #526161; color: white; font-size: 10px"
       >
-        ⓒ {{ new Date().getFullYear() }} — SPACE-shop.com., LTD.All RIGHTS
+        ⓒ {{ new Date().getFullYear() }} — www.space-shop.online, LTD.All RIGHTS
         RESERVED.
       </v-col>
     </v-footer>
@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .footer {
   text-align: center;
 }

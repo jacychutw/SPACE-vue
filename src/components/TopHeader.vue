@@ -3,13 +3,9 @@
     <div class="login-cart mt-3">
       <span v-if="loggedIn" class="mr-3"
         >Hi! {{ username }}
-        <!-- <v-icon v-if="checkEmpty()" @click="toShoppingCart" left style="color: #526161"> -->
         <v-icon @click="toShoppingCart" left style="color: #526161">
           mdi-cart-outline
         </v-icon>
-        <!-- <v-icon v-else @click="toShoppingCart" left style="color: #526161">
-          mdi-cart
-        </v-icon> -->
         <v-icon @click="signOut" left style="color: #526161">
           mdi-logout
         </v-icon>
@@ -70,7 +66,6 @@ export default {
     },
     async readData() {
       let user = firebase.auth().currentUser;
-      //let username = user.displayName;
       if (user) {
         this.useremail = user.email;
         const dbGetUser = firebase
@@ -87,15 +82,7 @@ export default {
           });
         });
       }
-      //this.checkEmpty();
     },
-    // checkEmpty() {
-    //   if (this.products.length == 0) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // },
   },
 };
 </script>

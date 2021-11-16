@@ -18,40 +18,10 @@ import { HollowDotsSpinner } from "epic-spinners";
 export default {
   components: { HollowDotsSpinner },
   name: "Spinner",
-  // props: ["start"],
-  // data() {
-  //   return {
-  //     mutableStart: this.start,
-  //   }
-  // },
-  // watch: {
-  //   start() {
-  //     this.mutableStart = this.start;
-  //   }
-  // }
-  // watch: {
-  //   start: function(newVal, ) {
-  //     if(this.mutableStart !== newVal) {
-  //       this.mutableStart = true;
-  //     } else {
-  //       this.mutableStart = false;
-  //     }
-  //   }
-  // }
 };
-
-// confirmPassword: function(newVal, oldVal) {
-//   if(this.password !== newVal) {
-//     this.confirmError = true;
-//     console.log("unmatch", oldVal);
-//   } else {
-//     this.confirmError = false;
-//     console.log("match");
-//   }
-// }
 </script>
 
-<style>
+<style scoped>
 .loader {
   position: fixed;
   z-index: 1;

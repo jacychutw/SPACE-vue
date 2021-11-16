@@ -65,7 +65,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page-title {
   display: flex;
   justify-content: center;

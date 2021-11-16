@@ -2,7 +2,7 @@
   <div class="welcome container">
     <div v-if="showLogin">
       <Login @login="enterCart" />
-      <p class="mb-16" style="color: gray">
+      <p class="mb-16 mt-4" style="color: gray">
         No account yet?
         <span
           @click="showLogin = false"
@@ -14,7 +14,7 @@
     </div>
     <div v-else>
       <Register @signup="enterCart" />
-      <p class="mb-16" style="color: gray">
+      <p class="mb-16 mt-4" style="color: gray">
         Already registered?
         <span
           @click="showLogin = true"
@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .welcome {
   text-align: center;
   padding: 20px 0;

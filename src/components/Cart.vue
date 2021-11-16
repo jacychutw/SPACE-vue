@@ -49,9 +49,6 @@
       style="display: flex; justify-content: center; color: #526161"
     >
       <div>結帳金額：NT$ {{ sumnumber }}</div>
-      <!-- <div class="float-right mt-8">
-        <span class="checkcart-button">下一步</span>
-      </div> -->
     </div>
 
     <div
@@ -61,22 +58,6 @@
     >
       您的結帳金額超過 5 萬元(大量訂購)，欲購買請直接致電與我們聯繫！
     </div>
-
-    <!-- <form action="https://ccore.newebpay.com/MPG/mpg_gateway" method="post"> -->
-    <form @submit.prevent="submitForm">
-      <!-- <form action="{{ tradeWithPage.PayGateWay }}" method="post"> -->
-      <input type="hidden" name="MerchantID" value="MS125084583" />
-      <input type="hidden" name="RespondType" value="JSON" />
-      <input type="hidden" name="TradeInfo" value="#{tradeinfo}" />
-      <input type="hidden" name="TradeSha" value="#{sha}" />
-      <input type="hidden" name="TimeStamp" :value="timestamp" />
-      <input type="hidden" name="Version" value="1.5" />
-      <input type="hidden" name="MerchantOrderNo" :value="timestamp" />
-      <input type="hidden" name="Amt" :value="sumnumber" />
-      <input type="hidden" name="ItemDesc" value="SPACE-shopping" />
-      <input type="hidden" name="Email" :value="useremail" />
-      <!-- <div @click="submitForm" style="display: flex; justify-content: flex-end;"><button class="checkcart-button">下一步</button></div> -->
-    </form>
 
     <!-- ====== delete-dialog ====== -->
     <check-dialog :openDialog="openCheckDialog">
@@ -116,9 +97,6 @@
 import CheckDialog from "../components/CheckDialog";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-//import { Endcrypt } from "endcrypt";
-import AES from "@/utils/aes.js";
-import axios from "axios";
 
 export default {
   data() {
@@ -126,14 +104,6 @@ export default {
       PayGateWay: {},
       trade: {},
       tradeWithPage: {},
-      spgateway: {
-        // HashKey: process.env.HASHKEY,//'MS125084583',
-        // HashIV: process.env.HASHIV,//'2RLIPflUtc5Doo0Km18CgGveoqhLSL4K',
-        // MerchantID: process.env.MERCHANTID,//'CXlO34ad4svifoQP',
-        HashIV: "CXlO34ad4svifoQP",
-        HashKey: "2RLIPflUtc5Doo0Km18CgGveoqhLSL4K",
-        MerchantID: "MS125084583",
-      },
       publicPath: process.env.BASE_URL,
       products: [],
       sumnumber: 0,
@@ -202,23 +172,15 @@ export default {
   methods: {
     checkEmptyCart() {
       if (this.products.length == 0) {
-        // this.toNextStep = false;
-        // this.$emit("toStepTwo",false)
         return true;
       } else {
-        // this.toNextStep = true;
-        // this.$emit("toStepTwo",true)
         return false;
       }
     },
     checkBill() {
       if (this.sumnumber > 50000) {
-        // this.toNextStep = false;
-        // this.$emit("toStepTwo",false)
         return true;
       } else {
-        // this.toNextStep = true;
-        // this.$emit("toStepTwo",true)
         return false;
       }
     },
@@ -249,10 +211,8 @@ export default {
       await dbGetUser.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let num = doc.data().price.replace(/^.*?(\d+).*/, "$1");
-          //console.log(num);
           let eachsum = num * doc.data().count;
           this.sumnumber += parseInt(eachsum);
-          //console.log(eachsum);
           const newData = { ...doc.data(), eachsum: "NT$ " + eachsum };
           this.products.push(newData);
         });
@@ -263,7 +223,6 @@ export default {
     async deleteFromCart() {
       this.isDataLoaded = false;
       let user = firebase.auth().currentUser;
-      //this.username = user.displayName;
       let deleteId = this.deleteId;
       const dbGetUser = firebase
         .firestore()
@@ -274,7 +233,6 @@ export default {
       await dbGetUser.then((doc) => {
         doc.forEach((element) => {
           element.ref.delete();
-          console.log("deleted");
         });
         return (this.isDataLoaded = true);
       });
@@ -289,76 +247,6 @@ export default {
         this.$router.go();
       }, 300);
     },
-    submitForm() {
-      let key = "2RLIPflUtc5Doo0Km18CgGveoqhLSL4K";
-      let iv = "CXlO34ad4svifoQP";
-
-      this.trade = {
-        MerchantID: this.spgateway.MerchantID,
-        RespondType: "JSON",
-        TimeStamp: this.timestamp,
-        Version: 1.5,
-        MerchantOrderNo: this.timestamp,
-        Amt: this.sumnumber,
-        ItemDesc: "SPACE-shopping",
-        Email: this.useremail,
-      };
-
-      this.tradeWithPage = {
-        MerchantID: this.spgateway.MerchantID,
-        RespondType: "JSON",
-        TimeStamp: this.timestamp,
-        Version: 1.5,
-        MerchantOrderNo: this.timestamp,
-        Amt: this.sumnumber,
-        ItemDesc: "SPACE-shopping",
-        Email: this.useremail,
-        PayGateWay: "https://ccore.newebpay.com/MPG/mpg_gateway",
-      };
-
-      console.log(this.trade);
-      let aesMStr = AES.encryptTradeInfo(key, iv, this.trade);
-      let parameter = `HashKey=${this.spgateway.HashKey}&${aesMStr}&HashIV=${this.spgateway.HashIV}`;
-      let shaOri = AES.encryptSha(parameter);
-      let sha = shaOri.toUpperCase();
-
-      console.log(aesMStr);
-      console.log(sha);
-
-      // const headers = {
-      //   'Content-Type': 'XMLHttpRequest',
-      //   'Access-Control-Allow-Origin': '*'
-      // }
-      // axios.defaults.withCredentials = true;
-      // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-      // axios.defaults.headers.post['Access-Control-Allow-Methods'] ='GET,POST,OPTIONS,DELETE,PUT'
-      //axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-      axios
-        .post(
-          "https://secret-ocean-49799.herokuapp.com/https://ccore.newebpay.com/MPG/mpg_gateway",
-          {
-            tradeinfo: aesMStr,
-            sha: sha,
-          }
-          //{headers: headers}
-        )
-        .then((response) => {
-          console.log("Data saved successfully");
-          console.log(response);
-          // this.response = response.data
-
-          // this.success = 'Data saved successfully';
-          // this.response = JSON.stringify(response, null, 2)
-        })
-        .catch((error) => {
-          console.log(error);
-
-          // this.response = 'Error: ' + error.response.status
-        });
-      // this.name = '';
-      // this.email = '';
-      // this.firstSon = '';
-    },
   },
   created() {
     this.readData();
@@ -366,5 +254,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
