@@ -10,10 +10,14 @@
         <p v-if="checkIfChair">所有商品>椅子>{{ title }}</p>
         <p v-else>所有商品>燈具>{{ title }}</p>
       </div>
-      <v-row v-cloak>
+      <v-row>
         <v-col cols="12" sm="6">
           <v-card class="pa-2" outlined tile>
-            <img class="card-img" :src="productimg" :alt="productimg" />
+            <v-lazy-image
+              class="card-img"
+              :src="productimg"
+              :alt="productimg"
+            />
           </v-card>
         </v-col>
         <v-col cols="12" sm="6">
@@ -101,6 +105,7 @@
 import Info from "../assets/info.json";
 import CheckDialog from "./CheckDialog";
 import firebase from "firebase/compat/app";
+import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 import "firebase/compat/auth";
 
 export default {
@@ -117,6 +122,7 @@ export default {
   },
   components: {
     "check-dialog": CheckDialog,
+    VLazyImage,
   },
   computed: {
     title() {

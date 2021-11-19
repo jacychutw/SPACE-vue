@@ -9,21 +9,24 @@
     </div>
     <div class="ml-8 mr-8 shineHover">
       <figure>
-        <img
-          @click="toChairs"
-          class="all-products-img"
-          src="../assets/chairs.png"
-          alt="chairs"
-        />
+        <span @click="toChairs">
+          <v-lazy-image
+            class="all-products-img"
+            :src="`${publicPath}img/chairs.png`"
+            alt="chairs"
+          />
+        </span>
       </figure>
       <div class="mt-4"></div>
       <figure>
-        <img
-          @click="toLights"
-          class="all-products-img mt-2"
-          src="../assets/lights.png"
-          alt="lights"
-        />
+        <span @click="toLights">
+          <v-lazy-image
+            @click="toLights"
+            class="all-products-img mt-2"
+            :src="`${publicPath}img/lights.png`"
+            alt="lights"
+          />
+        </span>
       </figure>
     </div>
     <div class="mt-8 mb-8">
@@ -37,9 +40,16 @@
 </template>
 
 <script>
+import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+
 export default {
   data() {
-    return {};
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
+  components: {
+    VLazyImage,
   },
   methods: {
     toChairs() {

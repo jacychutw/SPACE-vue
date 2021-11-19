@@ -15,7 +15,11 @@
       </p>
     </div>
     <div class="ml-16 mr-16">
-      <img v-cloak class="about-img" src="../assets/about.png" alt="about" />
+      <v-lazy-image
+        class="about-img"
+        :src="`${publicPath}img/about.png`"
+        alt="about"
+      />
     </div>
     <div class="mt-8 mb-8">
       <img
@@ -26,6 +30,21 @@
     </div>
   </div>
 </template>
+
+<script>
+import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+
+export default {
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    };
+  },
+  components: {
+    VLazyImage,
+  },
+};
+</script>
 
 <style scoped>
 .page-title {

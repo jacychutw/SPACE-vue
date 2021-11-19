@@ -1,13 +1,17 @@
 <template>
   <div>
-    <img v-cloak class="home-img" src="../assets/home.png" alt="home" />
+    <v-lazy-image
+      class="home-img"
+      :src="`${publicPath}img/home.png`"
+      alt="home"
+    />
     <p class="welcome-slogan mt-4">Welcome! Take A Seat.</p>
     <v-container class="white">
-      <v-row v-cloak>
+      <v-row>
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <div class="fixed-card" @click="checkItem(item.img)">
             <v-card class="pa-2 home-link-img" outlined tile>
-              <img
+              <v-lazy-image
                 class="card-img"
                 :src="`${publicPath}img/elements/${item.img}.jpg`"
                 alt="random-item"
@@ -36,6 +40,7 @@
 
 <script>
 import homeInfo from "../assets/home.json";
+import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   name: "Home",
@@ -52,6 +57,9 @@ export default {
       publicPath: process.env.BASE_URL,
       homeData: homeInfo,
     };
+  },
+  components: {
+    VLazyImage,
   },
   created() {
     let allitems = [];

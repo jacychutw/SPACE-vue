@@ -9,16 +9,17 @@
       <div class="mt-4 mb-4">
         <p>所有商品>椅子</p>
       </div>
-      <v-row v-cloak>
+      <v-row>
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <v-card class="pa-2 flashHover" outlined tile>
             <figure>
-              <img
-                @click="checkItem(item.img)"
-                class="card-img product-img"
-                :src="`${publicPath}img/elements/${item.img}.jpg`"
-                alt="chair"
-              />
+              <span @click="checkItem(item.img)">
+                <v-lazy-image
+                  class="card-img product-img"
+                  :src="`${publicPath}img/elements/${item.img}.jpg`"
+                  alt="chair"
+                />
+              </span>
             </figure>
             <p class="card-title">{{ item.title }}</p>
             <p class="card-price">{{ item.price }}</p>
@@ -38,6 +39,7 @@
 
 <script>
 import info from "../assets/info.json";
+import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   data() {
@@ -46,6 +48,9 @@ export default {
       publicPath: process.env.BASE_URL,
       infoData: info,
     };
+  },
+  components: {
+    VLazyImage,
   },
   created() {
     let allitems = [];
