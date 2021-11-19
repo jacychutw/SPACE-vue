@@ -16,6 +16,7 @@
     </div>
     <div class="ml-16 mr-16">
       <img
+        v-cloak
         class="logistics-img"
         src="../assets/logistics.png"
         alt="logistics"

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="home-img" src="../assets/home.png" alt="home" />
+    <img v-cloak class="home-img" src="../assets/home.png" alt="home" />
     <p class="welcome-slogan mt-4">Welcome! Take A Seat.</p>
     <v-container class="white">
       <v-row v-cloak>

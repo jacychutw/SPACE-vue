@@ -13,7 +13,12 @@
       </p>
     </div>
     <div class="ml-16 mr-16">
-      <img class="payment-img" src="../assets/payment.png" alt="payment" />
+      <img
+        v-cloak
+        class="payment-img"
+        src="../assets/payment.png"
+        alt="payment"
+      />
     </div>
     <div class="mt-8 mb-8">
       <img
