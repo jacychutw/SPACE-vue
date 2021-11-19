@@ -3,7 +3,7 @@
     <img class="home-img" src="../assets/home.png" alt="home" />
     <p class="welcome-slogan mt-4">Welcome! Take A Seat.</p>
     <v-container class="white">
-      <v-row>
+      <v-row v-cloak>
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <div class="fixed-card" @click="checkItem(item.img)">
             <v-card class="pa-2 home-link-img" outlined tile>

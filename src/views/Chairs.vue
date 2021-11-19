@@ -9,7 +9,7 @@
       <div class="mt-4 mb-4">
         <p>所有商品>椅子</p>
       </div>
-      <v-row>
+      <v-row v-cloak>
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <v-card class="pa-2 flashHover" outlined tile>
             <figure>
