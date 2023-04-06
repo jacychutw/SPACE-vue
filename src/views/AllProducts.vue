@@ -10,7 +10,7 @@
     <div class="ml-8 mr-8 shineHover">
       <figure>
         <span @click="toChairs">
-          <v-lazy-image
+          <v-img
             class="all-products-img"
             :src="`${publicPath}img/chairs.png`"
             alt="chairs"
@@ -20,7 +20,7 @@
       <div class="mt-4"></div>
       <figure>
         <span @click="toLights">
-          <v-lazy-image
+          <v-img
             @click="toLights"
             class="all-products-img mt-2"
             :src="`${publicPath}img/lights.png`"
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+// import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   data() {
@@ -49,7 +49,7 @@ export default {
     };
   },
   components: {
-    VLazyImage,
+    // VLazyImage,
   },
   methods: {
     toChairs() {
