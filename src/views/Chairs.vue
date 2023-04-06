@@ -14,7 +14,7 @@
           <v-card class="pa-2 flashHover" outlined tile>
             <figure>
               <span @click="checkItem(item.img)">
-                <v-lazy-image
+                <v-img
                   class="card-img product-img"
                   :src="`${publicPath}img/elements/${item.img}.jpg`"
                   alt="chair"
@@ -39,7 +39,7 @@
 
 <script>
 import info from "../assets/info.json";
-import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+// import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   data() {
@@ -50,7 +50,7 @@ export default {
     };
   },
   components: {
-    VLazyImage,
+    // VLazyImage,
   },
   created() {
     let allitems = [];
