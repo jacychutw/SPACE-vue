@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-lazy-image
+    <v-img
       class="home-img"
       :src="`${publicPath}img/home.png`"
       alt="home"
@@ -11,7 +11,7 @@
         <v-col v-for="(item, i) in displayItems" :key="i" cols="6" sm="3">
           <div class="fixed-card" @click="checkItem(item.img)">
             <v-card class="pa-2 home-link-img" outlined tile>
-              <v-lazy-image
+              <v-img
                 class="card-img"
                 :src="`${publicPath}img/elements/${item.img}.jpg`"
                 alt="random-item"
@@ -40,7 +40,7 @@
 
 <script>
 import homeInfo from "../assets/home.json";
-import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+// import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   name: "Home",
@@ -59,7 +59,7 @@ export default {
     };
   },
   components: {
-    VLazyImage,
+    // VLazyImage,
   },
   created() {
     let allitems = [];
