@@ -13,7 +13,7 @@
       <v-row>
         <v-col cols="12" sm="6">
           <v-card class="pa-2" outlined tile>
-            <v-lazy-image
+            <v-img
               class="card-img"
               :src="productimg"
               :alt="productimg"
@@ -105,7 +105,7 @@
 import Info from "../assets/info.json";
 import CheckDialog from "./CheckDialog";
 import firebase from "firebase/compat/app";
-import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+// import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 import "firebase/compat/auth";
 
 export default {
@@ -122,7 +122,7 @@ export default {
   },
   components: {
     "check-dialog": CheckDialog,
-    VLazyImage,
+    // VLazyImage,
   },
   computed: {
     title() {
