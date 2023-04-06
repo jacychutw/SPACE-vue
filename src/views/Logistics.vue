@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="ml-16 mr-16">
-      <v-lazy-image
+      <v-img
         class="logistics-img"
         :src="`${publicPath}img/logistics.png`"
         alt="logistics"
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
+// import VLazyImage from "v-lazy-image/v2/v-lazy-image.es.js";
 
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     };
   },
   components: {
-    VLazyImage,
+    // VLazyImage,
   },
 };
 </script>
